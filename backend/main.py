@@ -32,17 +32,17 @@ ORDERS = read_orders()
 
 
 @app.get("/")
-async def root():
+async def root() -> dict[str, str]:
     return {"message": "Welcome to Altamash's Amazon API :)"}
 
 
 @app.get("/greeting")
-async def get_greeting():
+async def get_greeting() -> dict[str, str]:
     return {"message": "Hello from Altamash"}
 
 
 @app.post("/greeting")
-async def post_greeting(name: str):
+async def post_greeting(name: str) -> dict[str, str]:
     return {"message": f"Hello {name}!"}
 
 
@@ -55,7 +55,7 @@ async def get_products() -> list[Product]:
 
 @app.post("/orders")
 async def add_order(cart: Cart) -> Order:
-    global ORDERS, PRODUCTS, DELIVERY_OPTIONS
+    global PRODUCTS, DELIVERY_OPTIONS, ORDERS
 
     products = []
     product_prices_before_tax = []
@@ -107,7 +107,7 @@ async def count_orders() -> int:
 
 
 @app.delete("/orders")
-async def delete_orders():
+async def delete_orders() -> dict[str, str]:
     global ORDERS
 
     old_order_count = len(ORDERS)

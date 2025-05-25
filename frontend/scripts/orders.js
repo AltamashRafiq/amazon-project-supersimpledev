@@ -3,6 +3,7 @@ import { cart, updateCartQuantity } from "../data/cart-class.js";
 import { products, loadProductsFetch } from "../data/products.js";
 import { stringISOToDayJS } from "./utils/date.js";
 import { addSearchBarEventListeners } from "./utils/searchBar.js";
+import { formatCurrency } from "./utils/money.js";
 
 function renderOrderProductDetails(product, orderProductDetails, orderId) {
   let productHTML = `
@@ -14,7 +15,7 @@ function renderOrderProductDetails(product, orderProductDetails, orderId) {
       <div class="product-name">${product.name}</div>
       <div class="product-delivery-date">Arriving on: ${stringISOToDayJS(
         orderProductDetails.estimatedDeliveryTime
-      ).format("M dd")}</div>
+      ).format("MMM DD")}</div>
       <div class="product-quantity">Quantity: ${
         orderProductDetails.quantity
       }</div>
@@ -67,7 +68,7 @@ function renderOrders() {
           </div>
           <div class="order-total">
             <div class="order-header-label">Total:</div>
-            <div>$35.06</div>
+            <div>$${formatCurrency(order.totalCostCents)}</div>
           </div>
         </div>
 

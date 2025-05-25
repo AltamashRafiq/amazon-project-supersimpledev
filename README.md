@@ -1,0 +1,1 @@
+This is my unconventional and painstaking solution to supersimpledev's amazon final project. I deliverately took the hardest path through this assignment and even built my own backend. I did this because I'm a real gangsta.
